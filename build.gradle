@@ -38,6 +38,9 @@ project(':app') {
   
   dependencies {
     implementation project(':utilities')
+    implementation project(':database')
+    implementation 'com.cloudinary:cloudinary-http44:1.32.0'
+    
   }
   
   application {
@@ -55,6 +58,11 @@ project(':app') {
 }
 
 project(':utilities') {
+  dependencies {
+    implementation 'org.mindrot:jbcrypt:0.4'
+  }
+}
+project(':database') {
   
 }
 
