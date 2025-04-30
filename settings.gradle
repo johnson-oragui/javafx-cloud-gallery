@@ -17,4 +17,4 @@ plugins {
 }
 
 rootProject.name = 'javafx-cloud-gallery'
-include('app', 'utilities')
+include('app', 'utilities', 'database')
