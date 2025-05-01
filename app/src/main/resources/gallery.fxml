@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
+              fx:controller="org.javafxCloudGallery.app.controllers.GalleryController">
+  <top>
+    <HBox>
+      <Button text="Upload Image" onAction="#handleUpload"/>
+    </HBox>
+  </top>
+
+  <center>
+    <ScrollPane>
+      <FlowPane fx:id="imageContainer" hgap="10" vgap="10" prefWrapLength="800"/>
+    </ScrollPane>
+  </center>
+</BorderPane>
