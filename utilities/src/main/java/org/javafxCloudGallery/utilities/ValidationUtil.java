@@ -3,7 +3,8 @@ package org.javafxCloudGallery.utilities;
 import java.util.regex.Pattern;
 
 public class ValidationUtil {
-  private static final Pattern EMAIL_PATTERN = Pattern.compile("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$");
+  private static final Pattern EMAIL_PATTERN = Pattern.compile(
+      "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,}$");
 
   public static Tuple<String, String, String> validator(String username, String email, String password)
       throws Exception {
@@ -16,7 +17,6 @@ public class ValidationUtil {
     }
 
     if (email != null) {
-      hasInvalidChar(email, "email", "~!#$%^&*()+=,/?>|<':\"");
       emailValidator(email);
       tuple.setEmail(email);
     }
@@ -60,7 +60,13 @@ public class ValidationUtil {
   }
 
   private static void emailValidator(String email) throws Exception {
-    if (!EMAIL_PATTERN.matcher(email).matches()) {
+    System.out.println("Email: " + email);
+    if (email == null || email.isEmpty()) {
+      throw new Exception("invalid email");
+    }
+    Boolean isValid = EMAIL_PATTERN.matcher(email).matches();
+    System.out.println("isValid: " + isValid);
+    if (!isValid) {
       throw new Exception("invalid email");
     }
   }
