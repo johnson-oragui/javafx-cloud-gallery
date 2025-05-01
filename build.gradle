@@ -60,11 +60,12 @@ project(':app') {
 project(':utilities') {
   dependencies {
     implementation 'org.mindrot:jbcrypt:0.4'
+    implementation 'io.github.cdimascio:dotenv-java:3.0.0'
   }
 }
 project(':database') {
   dependencies {
-    implementation 'io.github.cdimascio:dotenv-java:3.0.0'
+    implementation project(':utilities')
     implementation 'org.postgresql:postgresql:42.7.3'
   }
 }
