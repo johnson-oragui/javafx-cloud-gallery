@@ -17,6 +17,7 @@ allprojects {
   repositories {
     mavenCentral()
   }
+  
 }
 
 subprojects {
@@ -39,8 +40,7 @@ project(':app') {
   dependencies {
     implementation project(':utilities')
     implementation project(':database')
-    implementation 'com.cloudinary:cloudinary-http44:1.32.0'
-    
+    implementation 'com.cloudinary:cloudinary-http44:1.32.0'    
   }
   
   application {
@@ -63,7 +63,10 @@ project(':utilities') {
   }
 }
 project(':database') {
-  
+  dependencies {
+    implementation 'io.github.cdimascio:dotenv-java:3.0.0'
+    implementation 'org.postgresql:postgresql:42.7.3'
+  }
 }
 
 java {
