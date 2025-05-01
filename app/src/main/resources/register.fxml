@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.javafxCloudGallery.app.controllers.AuthController" spacing="10" alignment="CENTER">
+  <Label text="Register" style="-fx-font-size: 20; -fx-font-weight: bold;"/>
+  <TextField fx:id="usernameField" promptText="Username"/>
+  <TextField fx:id="emailField" promptText="Email"/>
+  <PasswordField fx:id="passwordField" promptText="Password"/>
+  <PasswordField fx:id="ConfirmPasswordField" promptText="Confirm Password"/>
+  <HBox spacing="10" alignment="CENTER">
+    <Button text="Login" onAction="#switchToLogin"/>
+    <Button text="Register" onAction="#handleRegister"/>
+  </HBox>
+  <Label fx:id="errorLabel" style="-fx-text-fill: red;"/>
+</VBox>
