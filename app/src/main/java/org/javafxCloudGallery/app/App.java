@@ -3,7 +3,77 @@
  */
 package org.javafxCloudGallery.app;
 
-public class App {
+import java.io.IOException;
+import java.net.URL;
+
+import org.javafxCloudGallery.app.controllers.AuthController;
+import org.javafxCloudGallery.app.controllers.GalleryController;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+public class App extends Application {
+    private static Stage primaryStage;
+
+    @Override
+    public void start(Stage stage) {
+        primaryStage = stage;
+        showLoginScreen();
+    }
+
+    public static void showLoginScreen() {
+
+        try {
+            URL fxmlUrl = App.class.getResource("/login.fxml");
+
+            FXMLLoader fxmlLoader = new FXMLLoader(fxmlUrl);
+            Parent parent = fxmlLoader.load();
+
+            AuthController controller = fxmlLoader.getController();
+            controller.setPrimaryStage(primaryStage);
+
+            primaryStage.setScene(new Scene(parent, 400, 300));
+            primaryStage.setTitle("Login");
+
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("Error loading FXML: " + e.getMessage());
+        }
+    }
+
+    public static void showRegisterScreen() throws Exception {
+        URL fxmlUrl = App.class.getResource("/register.fxml");
+
+        FXMLLoader fxmlLoader = new FXMLLoader(fxmlUrl);
+        Parent parent = fxmlLoader.load();
+
+        AuthController controller = fxmlLoader.getController();
+        controller.setPrimaryStage(primaryStage);
+
+        primaryStage.setScene(new Scene(parent, 400, 300));
+        primaryStage.setTitle("Register");
+    }
+
+    public static void showGalleryScreen(int userId) throws Exception {
+        URL fxmlUrl = App.class.getResource("/gallery.fxml");
+
+        FXMLLoader fxmlLoader = new FXMLLoader(fxmlUrl);
+        Parent parent = fxmlLoader.load();
+
+        GalleryController controller = fxmlLoader.getController();
+        controller.initializeGallery(userId);
+
+        primaryStage.setScene(new Scene(parent, 800, 600));
+        primaryStage.setTitle("Image Gallery");
+        primaryStage.show();
+
+    }
+
     public static void main(String[] args) {
+        launch(args);
     }
 }
