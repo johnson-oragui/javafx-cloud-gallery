@@ -10,7 +10,7 @@ import org.javafcCloudGallery.database.DatabaseManager;
 public class UserImageRepository {
   public static Boolean saveImage(String thumbnailUrl, int UserId, String imageUrl, String title, String description)
       throws SQLException, Exception {
-    String queryString = "INSERT INTO user_images (user_id, image_url, thumbnail_url, title, description) VALUES (?,?,?,?);";
+    String queryString = "INSERT INTO user_images (user_id, image_url, thumbnail_url, title, description) VALUES (?,?,?,?,?);";
     try (Connection conn = DatabaseManager.getConnection();
         PreparedStatement stmt = conn.prepareStatement(queryString)) {
       stmt.setInt(1, UserId);
@@ -24,14 +24,14 @@ public class UserImageRepository {
 
   public static ResultSet getUserImages(int userId, int page, int limit) throws SQLException, Exception {
     String queryString = "SELECT * FROM user_images WHERE user_id = ? ORDER BY uploaded_at LIMIT ? OFFSET ?";
-    try (Connection conn = DatabaseManager.getConnection();
-        PreparedStatement stmt = conn.prepareStatement(queryString)) {
-      int offset = page * limit - limit;
-      stmt.setInt(1, userId);
-      stmt.setInt(2, limit);
-      stmt.setInt(3, offset);
+    Connection conn = DatabaseManager.getConnection();
+    PreparedStatement stmt = conn.prepareStatement(queryString);
+    int offset = page * limit - limit;
+    stmt.setInt(1, userId);
+    stmt.setInt(2, limit);
+    stmt.setInt(3, offset);
 
-      return stmt.executeQuery();
-    }
+    return stmt.executeQuery();
+
   }
 }
