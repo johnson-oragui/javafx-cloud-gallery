@@ -51,7 +51,7 @@ project(':app') {
     main {
       resources {
         srcDirs = ['src/main/resources']
-        includes = ['**/*.fxml', '**/*.css']
+        includes = ['**/*.fxml', '**/*.css', '**/*.jpg', '**/*.png', '**/*.svg']
       }
     }
   }
@@ -67,6 +67,8 @@ project(':database') {
   dependencies {
     implementation project(':utilities')
     implementation 'org.postgresql:postgresql:42.7.3'
+    implementation 'com.zaxxer:HikariCP:5.0.1'
+    implementation 'org.slf4j:slf4j-simple:2.0.12'
   }
 }
 
