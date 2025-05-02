@@ -1,0 +1,168 @@
+/* Apply background image to the root StackPane (optional for gallery) */
+/*
+.root-pane {
+    -fx-background-image: url("images/gallery-background.jpg");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+}
+*/
+
+/* Header styling (reuse from other pages for consistency) */
+.header {
+  -fx-background-color: rgba(255, 255, 255, 0.9);
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 5, 0, 0, 2);
+}
+
+.app-title {
+  -fx-font-size: 24px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #333;
+}
+
+/* Horizontal Navbar styling */
+.navbar {}
+
+.navbar Button {
+  -fx-background-color: transparent;
+  -fx-border-color: transparent;
+  -fx-text-fill: #333;
+  -fx-font-size: 16px;
+  -fx-padding: 5 10;
+  -fx-cursor: hand;
+}
+
+.navbar Button:hover {
+  -fx-underline: true;
+}
+
+/* Highlight the active navigation button (Gallery) */
+.navbar Button:focused,
+.navbar Button:default {
+  -fx-underline: true;
+  -fx-font-weight: bold;
+}
+
+
+/* Upload Button styling (in the header) */
+.upload-button {
+  -fx-background-color: #28a745;
+  /* Green color */
+  -fx-text-fill: white;
+  -fx-font-size: 14px;
+  -fx-padding: 5 15;
+  -fx-border-radius: 5px;
+  -fx-background-radius: 5px;
+  -fx-cursor: hand;
+}
+
+.upload-button:hover {
+  -fx-background-color: #218838;
+}
+
+
+/* Hamburger Button styling */
+.hamburger-button {
+  -fx-background-color: transparent;
+  -fx-border-color: transparent;
+  -fx-cursor: hand;
+  /* Initially hidden, shown by controller on small screens */
+  /* -fx-visible: false; */
+  /* -fx-managed: false; */
+}
+
+
+/* Gallery Content Area Styling */
+.gallery-border-pane>.center {
+  /* Ensure the ScrollPane fills the center area */
+  -fx-padding: 0;
+  /* Remove default BorderPane padding */
+}
+
+.gallery-scroll-pane {
+  -fx-background-color: transparent;
+  /* Allow background to show if set */
+  -fx-border-color: transparent;
+  /* Remove default ScrollPane border */
+}
+
+.image-flow-pane {
+  -fx-background-color: transparent;
+  /* Allow background to show if set */
+  /* Padding is set in FXML, can also be here */
+}
+
+/* Styling for the individual image containers/ImageViews */
+.image-flow-pane .image-view {
+  /* when i add ImageView with styleClass="image-view" */
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 5, 0, 0, 2);
+  /* Subtle shadow */
+  -fx-border-color: #ccc;
+  -fx-border-width: 1px;
+  -fx-border-radius: 3px;
+  -fx-background-radius: 3px;
+  /*
+     Set a preferred size. For true responsiveness where image size changes
+     based on window width, would use bindings in the controller
+     or a different layout pane like TilePane.
+     This is a simple fixed size example.
+   */
+  -fx-fit-width: 150px;
+  -fx-fit-height: 150px;
+  -fx-preserve-ratio: true;
+  /* Maintain aspect ratio */
+  -fx-cursor: pointer;
+  /* Indicate clickable */
+}
+
+.image-flow-pane .image-view:hover {
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 8, 0, 0, 3);
+}
+
+
+/* Hamburger Menu Styling (reuse from other pages) */
+.hamburger-menu {
+  -fx-background-color: rgba(255, 255, 255, 0.98);
+  -fx-padding: 20px;
+  -fx-alignment: TOP_CENTER;
+  -fx-spacing: 10px;
+  -fx-pref-width: 250px;
+  -fx-max-width: 80%;
+  -fx-alignment: TOP_RIGHT;
+  /* Align the menu to the top right of the StackPane */
+}
+
+.hamburger-menu Button {
+  -fx-pref-width: 100%;
+  -fx-background-color: transparent;
+  -fx-border-color: #ccc;
+  -fx-border-radius: 5px;
+  -fx-background-radius: 5px;
+  -fx-text-fill: #333;
+  -fx-font-size: 16px;
+  -fx-padding: 10;
+  -fx-alignment: CENTER_LEFT;
+  -fx-cursor: hand;
+}
+
+.hamburger-menu Button:hover {
+  -fx-background-color: #f0f0f0;
+}
+
+/* Highlight the active navigation button in the hamburger menu */
+.hamburger-menu Button:focused {
+  -fx-background-color: #e0e0e0;
+  -fx-font-weight: bold;
+}
+
+/* Style the Upload button specifically in the hamburger menu */
+.hamburger-menu .upload-button {
+  -fx-background-color: #28a745;
+  -fx-text-fill: white;
+  -fx-alignment: CENTER;
+  /* Center the text/graphic in the button */
+}
+
+.hamburger-menu .upload-button:hover {
+  -fx-background-color: #218838;
+}

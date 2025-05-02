@@ -1,0 +1,158 @@
+/* Apply background image to the root StackPane */
+.root-pane {
+  -fx-background-image: url("../images/girl.jpg");
+  /* Adjust path */
+  -fx-background-size: cover;
+  -fx-background-position: center;
+  -fx-background-repeat: no-repeat;
+}
+
+/* Header styling (reuse from landing page if consistent) */
+.header {
+  -fx-background-color: rgba(255, 255, 255, 0.9);
+  /* Slightly more opaque header */
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 5, 0, 0, 2);
+}
+
+.app-title {
+  -fx-font-size: 24px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #333;
+}
+
+/* Horizontal Navbar styling */
+.navbar {}
+
+.navbar Button {
+  -fx-background-color: transparent;
+  -fx-border-color: transparent;
+  -fx-text-fill: #333;
+  -fx-font-size: 16px;
+  -fx-padding: 5 10;
+  -fx-cursor: hand;
+}
+
+.navbar Button:hover {
+  -fx-underline: true;
+}
+
+/* Highlight the active navigation button (Login in this case) */
+.navbar Button:focused,
+.navbar Button:default {
+  -fx-underline: true;
+  -fx-font-weight: bold;
+}
+
+
+/* Hamburger Button styling */
+.hamburger-button {
+  -fx-background-color: transparent;
+  -fx-border-color: transparent;
+  -fx-cursor: hand;
+  /* Initially hidden, shown by controller on small screens */
+  /* -fx-visible: false; */
+  /* -fx-managed: false; */
+}
+
+
+/* Login Form Container Styling */
+.login-form {
+  -fx-background-color: rgba(255, 255, 255, 0.95);
+  /* Semi-transparent background for form */
+  -fx-background-radius: 10px;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 15, 0, 0, 0);
+  -fx-max-width: 400px;
+  /* Max width for the form container */
+  /* Ensure it's centered in the BorderPane center region */
+  -fx-alignment: center;
+  /* This helps align the VBox within its parent (if parent allows) */
+}
+
+.form-title {
+  -fx-font-size: 24px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #333;
+  -fx-padding: 0 0 10 0;
+  /* Add bottom padding */
+}
+
+.login-form TextField,
+.login-form PasswordField {
+  -fx-pref-height: 35px;
+  -fx-border-color: #ccc;
+  -fx-border-radius: 5px;
+  -fx-background-radius: 5px;
+}
+
+.login-form Button {
+  -fx-background-color: #007bff;
+  -fx-text-fill: white;
+  -fx-font-size: 16px;
+  -fx-padding: 8 20;
+  -fx-border-radius: 5px;
+  -fx-background-radius: 5px;
+  -fx-cursor: hand;
+}
+
+.login-form Button:hover {
+  -fx-background-color: #0056b3;
+}
+
+/* Style for the Register button in the form */
+.login-form Button:last-child {
+  -fx-background-color: #6c757d;
+  /* Secondary color */
+}
+
+.login-form Button:last-child:hover {
+  -fx-background-color: #545b62;
+}
+
+
+.error-label {
+  -fx-text-fill: red;
+  -fx-font-size: 14px;
+  -fx-padding: 10 0 0 0;
+  /* Add top padding */
+}
+
+
+/* Hamburger Menu Styling (reuse from landing page if consistent) */
+.hamburger-menu {
+  -fx-background-color: rgba(255, 255, 255, 0.98);
+  /* More opaque */
+  -fx-padding: 20px;
+  -fx-alignment: TOP_CENTER;
+  -fx-spacing: 10px;
+  -fx-pref-width: 250px;
+  -fx-max-width: 80%;
+  -fx-alignment: TOP_RIGHT;
+  /* Align the menu to the top right of the StackPane */
+
+  /* Initially hidden, toggled by controller */
+  /* -fx-visible: false; */
+  /* -fx-managed: false; */
+}
+
+.hamburger-menu Button {
+  -fx-pref-width: 100%;
+  -fx-background-color: transparent;
+  -fx-border-color: #ccc;
+  -fx-border-radius: 5px;
+  -fx-background-radius: 5px;
+  -fx-text-fill: #333;
+  -fx-font-size: 16px;
+  -fx-padding: 10;
+  -fx-alignment: CENTER_LEFT;
+  -fx-cursor: hand;
+}
+
+.hamburger-menu Button:hover {
+  -fx-background-color: #f0f0f0;
+}
+
+/* Highlight the active navigation button in the hamburger menu */
+.hamburger-menu Button:focused {
+  -fx-background-color: #e0e0e0;
+  -fx-font-weight: bold;
+}

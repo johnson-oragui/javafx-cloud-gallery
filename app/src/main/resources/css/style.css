@@ -1,0 +1,134 @@
+/* Apply background image to the root StackPane */
+.root-pane {
+  -fx-background-image: url("../images/girl.jpg");
+  /* Adjust path to your image */
+  -fx-background-size: cover;
+  /* or 'contain', '100% 100%' */
+  -fx-background-position: center;
+  -fx-background-repeat: no-repeat;
+}
+
+/* Header styling */
+.header {
+  -fx-background-color: rgba(255, 255, 255, 0.8);
+  /* Semi-transparent white */
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 5, 0, 0, 2);
+  /* Subtle shadow */
+}
+
+.app-title {
+  -fx-font-size: 24px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #333;
+}
+
+/* Horizontal Navbar styling */
+.navbar {
+  /* Default: visible on large screens */
+}
+
+.navbar Button {
+  -fx-background-color: transparent;
+  -fx-border-color: transparent;
+  -fx-text-fill: #333;
+  -fx-font-size: 16px;
+  -fx-padding: 5 10;
+  -fx-cursor: hand;
+  /* Indicate it's clickable */
+}
+
+.navbar Button:hover {
+  -fx-underline: true;
+}
+
+
+/* Hamburger Button styling */
+.hamburger-button {
+  -fx-background-color: transparent;
+  -fx-border-color: transparent;
+  -fx-cursor: hand;
+  /* Initially hidden, shown by controller on small screens */
+  -fx-visible: false;
+  /* CSS can set visibility, but controller toggling is key */
+  -fx-managed: false;
+  /* CSS can set managed, but controller toggling is key */
+}
+
+
+/* Landing Content styling */
+.landing-content {
+  /* Background often handled by the root, text color needs contrast */
+}
+
+.main-heading {
+  -fx-font-size: 48px;
+  -fx-font-weight: bold;
+  -fx-text-fill: white;
+  /* Choose a color that contrasts with your background */
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.7), 10, 0, 0, 0);
+  /* Add shadow for readability */
+}
+
+.sub-heading {
+  -fx-font-size: 20px;
+  -fx-text-fill: #eee;
+  /* Lighter text */
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.7), 10, 0, 0, 0);
+}
+
+.cta-button {
+  -fx-background-color: #007bff;
+  /* Example primary color */
+  -fx-text-fill: white;
+  -fx-font-size: 18px;
+  -fx-padding: 10 20;
+  -fx-border-radius: 5px;
+  -fx-background-radius: 5px;
+  -fx-cursor: hand;
+}
+
+.cta-button:hover {
+  -fx-background-color: #0056b3;
+}
+
+
+/* Hamburger Menu Styling */
+.hamburger-menu {
+  -fx-background-color: rgba(255, 255, 255, 0.95);
+  /* Slightly less transparent */
+  -fx-padding: 20px;
+  -fx-alignment: TOP_CENTER;
+  -fx-spacing: 10px;
+  /* Position the menu - needs help from the controller or alignment */
+  -fx-pref-width: 250px;
+  /* Example width for the menu */
+  -fx-max-width: 80%;
+  /* Don't exceed 80% of parent width */
+
+  /* Align to top-right of the StackPane */
+  -fx-alignment: TOP_RIGHT;
+  /* This aligns the VBox within the StackPane */
+
+  /* Initially hidden, toggled by controller */
+  /* -fx-visible: false; */
+  /* -fx-managed: false; */
+}
+
+.hamburger-menu Button {
+  -fx-pref-width: 100%;
+  /* Make buttons fill the menu width */
+  -fx-background-color: transparent;
+  -fx-border-color: #ccc;
+  -fx-border-radius: 5px;
+  -fx-background-radius: 5px;
+  -fx-text-fill: #333;
+  -fx-font-size: 16px;
+  -fx-padding: 10;
+  -fx-alignment: CENTER_LEFT;
+  /* Align text left */
+  -fx-cursor: hand;
+}
+
+.hamburger-menu Button:hover {
+  -fx-background-color: #f0f0f0;
+}
