@@ -8,6 +8,7 @@ import java.net.URL;
 
 import org.javafxCloudGallery.app.controllers.AuthController;
 import org.javafxCloudGallery.app.controllers.GalleryController;
+import org.javafxCloudGallery.app.controllers.LandingPageController;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -17,26 +18,67 @@ import javafx.stage.Stage;
 
 public class App extends Application {
     private static Stage primaryStage;
+    public static int userId;
 
     @Override
     public void start(Stage stage) {
         primaryStage = stage;
-        showLoginScreen();
+        showLandingPage();
     }
 
-    public static void showLoginScreen() {
+    public static void showLandingPage() {
+        try {
+            URL fxmUrl = App.class.getResource("/landing.fxml");
+
+            FXMLLoader fxmlLoader = new FXMLLoader(fxmUrl);
+
+            Parent parent = fxmlLoader.load();
+
+            LandingPageController landingPageController = fxmlLoader.getController();
+            landingPageController.setPrimaryStage(primaryStage);
+
+            Scene scene = new Scene(parent, 800, 700);
+
+            // Load the CSS file
+            scene.getStylesheets().add(App.class.getResource("/css/style.css").toExternalForm()); // Adjust path
+
+            primaryStage.setScene(scene);
+            primaryStage.setTitle("HOME");
+
+            landingPageController.setupResponsiveness(scene);
+
+            primaryStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Error loading FXML: " + e.getMessage());
+        }
+    }
+
+    public static void showLoginScreen() throws Exception {
 
         try {
+            if (getUserId() > 0) {
+                showGalleryScreen(userId);
+            }
+
             URL fxmlUrl = App.class.getResource("/login.fxml");
 
             FXMLLoader fxmlLoader = new FXMLLoader(fxmlUrl);
             Parent parent = fxmlLoader.load();
 
-            AuthController controller = fxmlLoader.getController();
-            controller.setPrimaryStage(primaryStage);
+            Scene scene = new Scene(parent, 800, 700);
 
-            primaryStage.setScene(new Scene(parent, 400, 300));
+            AuthController authController = fxmlLoader.getController();
+            authController.setPrimaryStage(primaryStage);
+
+            // Load the CSS file for the login page
+            scene.getStylesheets().add(App.class.getResource("/css/auth.css").toExternalForm());
+
+            primaryStage.setScene(scene);
             primaryStage.setTitle("Login");
+
+            // --- Call the responsiveness setup after the scene is set ---
+            authController.setupResponsiveness(scene);
 
             primaryStage.show();
         } catch (IOException e) {
@@ -46,31 +88,53 @@ public class App extends Application {
     }
 
     public static void showRegisterScreen() throws Exception {
+        if (getUserId() > 0) {
+            showGalleryScreen(userId);
+        }
         URL fxmlUrl = App.class.getResource("/register.fxml");
 
         FXMLLoader fxmlLoader = new FXMLLoader(fxmlUrl);
         Parent parent = fxmlLoader.load();
 
-        AuthController controller = fxmlLoader.getController();
-        controller.setPrimaryStage(primaryStage);
+        AuthController authController = fxmlLoader.getController();
+        authController.setPrimaryStage(primaryStage);
 
-        primaryStage.setScene(new Scene(parent, 400, 300));
+        Scene scene = new Scene(parent, 800, 700);
+
+        // Load the CSS file for the login page
+        scene.getStylesheets().add(App.class.getResource("/css/auth.css").toExternalForm());
+
+        primaryStage.setScene(scene);
         primaryStage.setTitle("Register");
     }
 
     public static void showGalleryScreen(int userId) throws Exception {
+        if (userId == 0) {
+            showLoginScreen();
+        }
         URL fxmlUrl = App.class.getResource("/gallery.fxml");
 
         FXMLLoader fxmlLoader = new FXMLLoader(fxmlUrl);
         Parent parent = fxmlLoader.load();
 
-        GalleryController controller = fxmlLoader.getController();
-        controller.initializeGallery(userId);
+        Scene scene = new Scene(parent, 800, 700);
 
-        primaryStage.setScene(new Scene(parent, 800, 600));
+        GalleryController galleryController = fxmlLoader.getController();
+        galleryController.initializeGallery(userId, scene);
+        setUserId(userId);
+
+        primaryStage.setScene(scene);
         primaryStage.setTitle("Image Gallery");
         primaryStage.show();
 
+    }
+
+    public static void setUserId(int userId) {
+        App.userId = userId;
+    }
+
+    public static int getUserId() {
+        return userId;
     }
 
     public static void main(String[] args) {
