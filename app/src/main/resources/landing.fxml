@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.shape.Rectangle?>
+
+<StackPane xmlns="http://javafx.com/javafx/21+" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.javafxCloudGallery.app.controllers.LandingPageController" styleClass="root-pane">
+  <BorderPane>
+    <top>
+      <HBox alignment="CENTER_LEFT" spacing="20" styleClass="header">
+        <padding>
+          <Insets top="10" right="20" bottom="10" left="20"/>
+        </padding>
+        <Label text="MyGalleryApp" styleClass="app-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <HBox fx:id="navbar" alignment="CENTER" spacing="15" styleClass="navbar">
+          <Button text="Home" onAction="#handleHome"/>
+          <Button text="Login" onAction="#handleShowLogin"/>
+          <Button text="Register" onAction="#handleShowRegister"/>
+          <Button text="Gallery" onAction="#handleShowGallery"/>
+        </HBox>
+        <Button fx:id="hamburgerButton" styleClass="hamburger-button" onAction="#toggleHamburgerMenu">
+          <graphic>
+            <VBox spacing="3" alignment="CENTER">
+              <Rectangle width="20" height="3" fill="black"/>
+              <Rectangle width="20" height="3" fill="black"/>
+              <Rectangle width="20" height="3" fill="black"/>
+            </VBox>
+          </graphic>
+        </Button>
+      </HBox>
+    </top>
+
+    <center>
+      <VBox alignment="CENTER" spacing="30" styleClass="landing-content">
+        <padding>
+          <Insets top="50" right="20" bottom="50" left="20"/>
+        </padding>
+        <Label text="Welcome to Our Amazing App!" styleClass="main-heading"/>
+        <Label text="Discover new possibilities with our powerful features." styleClass="sub-heading"/>
+        <Button text="Get Started" styleClass="cta-button" onAction="#handleGetStarted"/>
+      </VBox>
+    </center>
+  </BorderPane>
+  <VBox fx:id="hamburgerMenu" alignment="TOP_CENTER" spacing="10" styleClass="hamburger-menu" visible="false" managed="false">
+    <padding>
+      <Insets top="70" right="20" bottom="20" left="20"/>
+    </padding>
+    <Button text="Home" onAction="#handleHome"/>
+    <Button text="Login" onAction="#handleShowLogin"/>
+    <Button text="Register" onAction="#handleShowRegister"/>
+    <Button text="Gallery" onAction="#handleShowGallery"/>
+    <Button text="Close Menu" onAction="#toggleHamburgerMenu"/>
+  </VBox>
+</StackPane>
