@@ -1,20 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.image.*?>
+<?import javafx.scene.shape.Rectangle?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
-              fx:controller="org.javafxCloudGallery.app.controllers.GalleryController">
-  <top>
-    <HBox>
-      <Button text="Upload Image" onAction="#handleUpload"/>
-    </HBox>
-  </top>
+<StackPane xmlns="http://javafx.com/javafx/21+" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.javafxCloudGallery.app.controllers.GalleryController" styleClass="root-pane">
+  <BorderPane styleClass="gallery-border-pane">
+    <top>
+      <HBox alignment="CENTER_LEFT" spacing="20" styleClass="header">
+        <padding>
+          <Insets top="10" right="20" bottom="10" left="20"/>
+        </padding>
+        <Label text="MyApp Gallery" styleClass="app-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <HBox fx:id="navbar" alignment="CENTER" spacing="15" styleClass="navbar">
+          <Button text="Home" onAction="#handleHome"/>
+          <Button text="Gallery" onAction="#handleGalleryNav"/>
+          <Button text="Account" onAction="#handleAccount"/>
+          <Button text="Logout" onAction="#handleLogout"/>
+        </HBox>
+        <Button text="Upload Image" onAction="#handleUpload" styleClass="upload-button"/>
+        <Button fx:id="hamburgerButton" styleClass="hamburger-button" onAction="#toggleHamburgerMenu">
+          <graphic>
+            <VBox spacing="3" alignment="CENTER">
+              <Rectangle width="20" height="3" fill="black"/>
+              <Rectangle width="20" height="3" fill="black"/>
+              <Rectangle width="20" height="3" fill="black"/>
+            </VBox>
+          </graphic>
+        </Button>
+      </HBox>
+    </top>
 
-  <center>
-    <ScrollPane>
-      <FlowPane fx:id="imageContainer" hgap="10" vgap="10" prefWrapLength="800"/>
-    </ScrollPane>
-  </center>
-</BorderPane>
+    <center>
+      <ScrollPane fitToWidth="true" fitToHeight="true" styleClass="gallery-scroll-pane">
+        <FlowPane fx:id="imageContainer" hgap="10" vgap="10" styleClass="image-flow-pane">
+          <padding>
+            <Insets top="10" right="10" bottom="10" left="10"/>
+          </padding>
+        </FlowPane>
+      </ScrollPane>
+    </center>
+  </BorderPane>
+  <VBox fx:id="hamburgerMenu" alignment="TOP_CENTER" spacing="10" styleClass="hamburger-menu" visible="false" managed="false">
+    <padding>
+      <Insets top="70" right="20" bottom="20" left="20"/>
+    </padding>
+    <Button text="Home" onAction="#handleHome"/>
+    <Button text="Gallery" onAction="#handleGalleryNav"/>
+    <Button text="Account" onAction="#handleAccount"/>
+    <Button text="Logout" onAction="#handleLogout"/>
+    <Button text="Upload Image" onAction="#handleUpload"/>
+    <Button text="Close Menu" onAction="#toggleHamburgerMenu"/>
+  </VBox>
+</StackPane>

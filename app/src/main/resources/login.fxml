@@ -1,15 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Rectangle?>
 
-<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.javafxCloudGallery.app.controllers.AuthController" spacing="10" alignment="CENTER">
-  <Label text="Login" style="-fx-font-size: 20; -fx-font-weight: bold;"/>
-  <TextField fx:id="usernameEmailField" promptText="Username or Email"/>
-  <PasswordField fx:id="passwordField" promptText="Password"/>
-  <HBox spacing="10" alignment="CENTER">
-    <Button text="Login" onAction="#handleLogin"/>
-    <Button text="Register" onAction="#switchToRegister"/>
-  </HBox>
-  <Label fx:id="errorLabel" style="-fx-text-fill: red;"/>
-</VBox>
+<StackPane xmlns="http://javafx.com/javafx/21+" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.javafxCloudGallery.app.controllers.AuthController" styleClass="root-pane">
+  <BorderPane>
+    <top>
+      <HBox alignment="CENTER_LEFT" spacing="20" styleClass="header">
+        <padding>
+          <Insets top="10" right="20" bottom="10" left="20"/>
+        </padding>
+        <Label text="MyGallery" styleClass="app-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <HBox fx:id="navbar" alignment="CENTER" spacing="15" styleClass="navbar">
+          <Button text="Home" onAction="#handleHome"/>
+          <Button text="Login" onAction="#handleLoginNav"/>
+          <Button text="Register" onAction="#handleRegisterNav"/>
+        </HBox>
+        <Button fx:id="hamburgerButton" styleClass="hamburger-button" onAction="#toggleHamburgerMenu">
+          <graphic>
+            <VBox spacing="3" alignment="CENTER">
+              <Rectangle width="20" height="3" fill="black"/>
+              <Rectangle width="20" height="3" fill="black"/>
+              <Rectangle width="20" height="3" fill="black"/>
+            </VBox>
+          </graphic>
+        </Button>
+      </HBox>
+    </top>
+
+    <center>
+      <VBox spacing="15" alignment="CENTER" styleClass="login-form">
+        <padding>
+          <Insets top="30" right="40" bottom="30" left="40"/>
+        </padding>
+        <Label text="Login" styleClass="form-title"/>
+        <TextField fx:id="usernameEmailField" promptText="Username or Email" prefWidth="250" maxWidth="300"/>
+        <PasswordField fx:id="passwordField" promptText="Password" prefWidth="250" maxWidth="300"/>
+        <HBox spacing="10" alignment="CENTER">
+          <Button text="Login" onAction="#handleLoginForm"/>
+          <Button text="Register" onAction="#switchToRegister"/>
+        </HBox>
+        <Label fx:id="errorLabel" styleClass="error-label"/>
+      </VBox>
+    </center>
+  </BorderPane>
+  <VBox fx:id="hamburgerMenu" alignment="TOP_CENTER" spacing="10" styleClass="hamburger-menu" visible="false" managed="false">
+    <padding>
+      <Insets top="70" right="20" bottom="20" left="20"/>
+    </padding>
+    <Button text="Home" onAction="#handleHome"/>
+    <Button text="Login" onAction="#handleLoginNav"/>
+    <Button text="Register" onAction="#handleRegisterNav"/>
+    <Button text="Close Menu" onAction="#toggleHamburgerMenu"/>
+  </VBox>
+</StackPane>
