@@ -2,8 +2,8 @@ package org.javafxCloudGallery.app.service;
 
 import java.util.Optional;
 
-import org.javafcCloudGallery.database.models.User;
-import org.javafcCloudGallery.database.repository.UserRepository;
+import org.javafxCloudGallery.database.models.User;
+import org.javafxCloudGallery.database.repository.UserRepository;
 import org.javafxCloudGallery.utilities.PasswordUtil;
 import org.javafxCloudGallery.utilities.Tuple;
 import org.javafxCloudGallery.utilities.ValidationUtil;
