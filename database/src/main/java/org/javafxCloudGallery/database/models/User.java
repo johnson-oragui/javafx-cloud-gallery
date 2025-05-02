@@ -1,4 +1,4 @@
-package org.javafcCloudGallery.database.models;
+package org.javafxCloudGallery.database.models;
 
 public class User {
   private int id;

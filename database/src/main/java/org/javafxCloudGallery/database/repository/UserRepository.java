@@ -1,4 +1,4 @@
-package org.javafcCloudGallery.database.repository;
+package org.javafxCloudGallery.database.repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Optional;
 
-import org.javafcCloudGallery.database.DatabaseManager;
-import org.javafcCloudGallery.database.models.User;
+import org.javafxCloudGallery.database.DatabaseManager;
+import org.javafxCloudGallery.database.models.User;
 
 public class UserRepository {
   public static Optional<User> findUserByEmailOrUsername(String target) throws SQLException, Exception {

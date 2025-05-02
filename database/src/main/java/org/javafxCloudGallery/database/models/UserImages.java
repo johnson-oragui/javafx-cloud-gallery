@@ -1,4 +1,4 @@
-package org.javafcCloudGallery.database.models;
+package org.javafxCloudGallery.database.models;
 
 public class UserImages {
   private int id;
@@ -11,10 +11,10 @@ public class UserImages {
   public UserImages() {
   }
 
-  public UserImages(int id, int user_id, String image_url, String thumnnail_url, String title, String description) {
+  public UserImages(int id, int user_id, String image_url, String thumbnail_url, String title, String description) {
     this.id = id;
     this.user_id = user_id;
-    this.thumbnail_url = thumnnail_url;
+    this.thumbnail_url = thumbnail_url;
     this.title = title;
     this.description = description;
   }

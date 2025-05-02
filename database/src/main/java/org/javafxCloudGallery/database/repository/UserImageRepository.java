@@ -1,11 +1,11 @@
-package org.javafcCloudGallery.database.repository;
+package org.javafxCloudGallery.database.repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.javafcCloudGallery.database.DatabaseManager;
+import org.javafxCloudGallery.database.DatabaseManager;
 
 public class UserImageRepository {
   public static Boolean saveImage(String thumbnailUrl, int UserId, String imageUrl, String title, String description)
@@ -23,7 +23,7 @@ public class UserImageRepository {
   }
 
   public static ResultSet getUserImages(int userId, int page, int limit) throws SQLException, Exception {
-    String queryString = "SELECT * FROM user_images WHERE user_id = ? ORDER BY uploaded_at LIMIT ? OFFSET ?";
+    String queryString = "SELECT * FROM user_images WHERE user_id = ? ORDER BY uploaded_at DESC LIMIT ? OFFSET ?";
     Connection conn = DatabaseManager.getConnection();
     PreparedStatement stmt = conn.prepareStatement(queryString);
     int offset = page * limit - limit;
