@@ -105,7 +105,11 @@ gradlew :app:run
 ```
 
 This will start the JavaFX application.
+---
+## DEMO
 
+https://github.com/user-attachments/assets/d7aefeae-162d-4d27-803a-fd35093b4c6c
+---
 ## Configuration
 
 The application loads configuration from the `.env` file at the project root using `dotenv-java`. Ensure all required variables (`DATABASE_URL`, `DATABASE_USER`, `DATABASE_PASSWORD`, `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`) are correctly set in this file.
